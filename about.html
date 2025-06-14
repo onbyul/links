@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONBYUL - 소개</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #a8d8a8 0%, #87ceeb 100%);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* 자연스러운 배경 텍스처 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            margin-top: 30px;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: 300;
+            color: #2c5530;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            color: #4a6b4a;
+            text-shadow: 0 1px 1px rgba(255,255,255,0.6);
+        }
+
+        .content-container {
+            background: linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 
+                0 8px 16px rgba(0,0,0,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.9),
+                inset 0 -1px 0 rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.6);
+            text-align: center;
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.3s forwards;
+        }
+
+        .content-container p {
+            font-size: 16px;
+            color: #2c5530;
+            margin-bottom: 20px;
+        }
+
+        .content-container p:last-child {
+            margin-bottom: 0;
+        }
+
+        .content-container h2 {
+            font-size: 20px;
+            font-weight: 500;
+            color: #1a4a1a;
+            margin: 30px 0 20px 0;
+            text-shadow: 0 1px 1px rgba(255,255,255,0.8);
+        }
+
+        .content-container h2:first-child {
+            margin-top: 0;
+        }
+
+        /* gj 태그 강조 스타일 */
+        gj {
+            font-weight: 700;
+            color: #1a4a1a;
+            background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.4));
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid rgba(255,255,255,0.6);
+            box-shadow: 
+                0 1px 2px rgba(0,0,0,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.8);
+        }
+
+        .back-button {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            display: block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,255,255,0.6));
+            border-radius: 12px;
+            box-shadow: 
+                0 4px 8px rgba(0,0,0,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.9),
+                inset 0 -1px 0 rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.6);
+            text-decoration: none;
+            color: #2c5530;
+            font-size: 24px;
+            text-align: center;
+            line-height: 48px;
+            font-weight: 300;
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 6px 12px rgba(0,0,0,0.15),
+                inset 0 1px 0 rgba(255,255,255,1),
+                inset 0 -1px 0 rgba(0,0,0,0.1);
+        }
+
+        .back-button:active {
+            transform: translateY(0);
+            box-shadow: 
+                0 2px 4px rgba(0,0,0,0.2),
+                inset 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .container {
+                max-width: 100%;
+                padding: 0 10px;
+            }
+            
+            .title {
+                font-size: 28px;
+            }
+            
+            .subtitle {
+                font-size: 16px;
+            }
+            
+            .content-container {
+                padding: 30px 25px;
+            }
+            
+            .content-container p {
+                font-size: 15px;
+            }
+            
+            .back-button {
+                top: 20px;
+                left: 20px;
+                width: 45px;
+                height: 45px;
+                line-height: 43px;
+                font-size: 20px;
+            }
+        }
+
+        /* 애니메이션 */
+        .title, .subtitle {
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .subtitle {
+            animation-delay: 0.2s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">←</a>
+    
+    <div class="container">
+        <div class="header">
+            <h1 class="title">ONBYUL</h1>
+            <p class="subtitle">소개</p>
+        </div>
+        
+        <div class="content-container">
+            <h2>i am...</h2>
+            <p>안녕하세요. 저는 스레드와 인스타그램에서 본명인 김규민으로 활동하고 있으며, 그 외의 공간에서는 예명인 김온별로 불리고 있습니다.
+2010년 부산에서 태어나 현재 중학교 3학년에 재학 중인 학생입니다.<br>
+<br>
+<br>어린 시절부터 저는 자신을 탐색하는 시간을 중요하게 여기며, 내면의 생각과 감정을 솔직하게 마주하고자 노력해왔습니다. 사람들과 깊이 소통하는 것을 좋아하지만, 혼자만의 시간을 통해 생각을 정리하고 성장하는 것도 중요하게 생각합니다.
+<br>
+<br>저는 일상 속 사소한 순간에서 의미를 찾고, 주변에서 영감을 받으며 삶을 살아가고 있습니다. 완벽하지는 않지만 꾸준히 노력하며 앞으로 나아가는 사람이 되고자 합니다.
+<br>
+<br>현재는 학교 생활과 개인적인 성장에 집중하며, 앞으로도 꾸준히 자신만의 길을 찾아 나갈 계획입니다. 때로는 어려움도 있지만 포기하지 않고 한 걸음씩 나아가겠습니다.
+<br>
+<br>아직 제 삶의 이야기는 계속해서 쓰여지고 있으며, 그 과정에서 점점 더 저다운 사람이 되어가고 있습니다.
+</p>
+        </div>
+    </div>
+
+    <script>
+        // 뒤로가기 버튼 터치 피드백
+        document.querySelector('.back-button').addEventListener('touchstart', function() {
+            this.style.transform = 'translateY(1px) scale(0.95)';
+        });
+        
+        document.querySelector('.back-button').addEventListener('touchend', function() {
+            this.style.transform = '';
+        });
+    </script>
+</body>
+</html>
